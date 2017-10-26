@@ -48,7 +48,7 @@ public class Permutation {
 
     public static void main(String[] args){
         Permutation _permutation = new Permutation();
-        int[] nums = {1, 2, 3};
+        int[] nums = {3, 4, 5};
         List<List<Integer>> results = _permutation.permute(nums);
         for (List<Integer> result: results
              ) {
