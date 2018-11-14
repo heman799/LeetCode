@@ -82,7 +82,7 @@ public class TopologicalSort {
 
     }
 
-/*    public static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("Hello World!");
 
         DirectedGraphNode d0 = new DirectedGraphNode(0);
@@ -115,15 +115,10 @@ public class TopologicalSort {
         TopologicalSort topologicalSort = new TopologicalSort();
         ArrayList<DirectedGraphNode> order = topologicalSort.topSort(graph);
 
-        for(DirectedGraphNode node : order) {
+        for (DirectedGraphNode node : order) {
             System.out.println(" -> " + node.label);
         }
-
-
-
-
-    }*/
-
+    }
 }
 
 class DirectedGraphNode {

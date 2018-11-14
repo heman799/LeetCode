@@ -17,9 +17,6 @@ public class BinaryTreeOrderTraverse {
 
 
 
-        int level = 0;
-
-
         //2. while queue is not empty
         while(!queue.isEmpty()){
             //3. level x --> x + 1
@@ -49,6 +46,34 @@ public class BinaryTreeOrderTraverse {
         return results;
     }
 
+    public ArrayList<ArrayList<Integer>> levelOrderCommon(TreeNode root) {
+        ArrayList<ArrayList<Integer>> results = new ArrayList<>();
+
+        if (root == null) {
+            return results;
+        }
+
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            ArrayList<Integer> currentLevel = new ArrayList<>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode head = queue.poll();
+                currentLevel.add(head.val);
+
+                if (head.left != null) queue.offer(head.left);
+
+                if (head.right != null) queue.offer(head.right);
+            }
+
+            results.add(currentLevel);
+        }
+
+        return results;
+    }
 
     public List<List<Integer>> pathSum(TreeNode root, int sum){
         List<List<Integer>> rst = new ArrayList<>();

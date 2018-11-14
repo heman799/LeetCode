@@ -54,8 +54,5 @@ public class Permutation {
              ) {
             System.out.println(result);
         }
-
-
-
     }
 }
