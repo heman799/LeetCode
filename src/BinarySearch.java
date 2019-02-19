@@ -58,7 +58,7 @@ public class BinarySearch {
          }
 
          if (reader.get(end) == target) {
-            return endj;
+            return end;
          }
 
          return -1;

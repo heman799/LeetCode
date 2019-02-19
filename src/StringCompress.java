@@ -22,7 +22,7 @@ public class StringCompress {
         return out.length() < s.length() ? out : s;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String a = "aabcccccaaa";
         StringCompress stringCompress = new StringCompress();
         String result = stringCompress.compress(a);
