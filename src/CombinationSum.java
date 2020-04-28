@@ -43,7 +43,7 @@ public class CombinationSum {
 
     public static void main(String[] args) {
         int[] arr = {2, 3, 6, 7};
-        int target = 7;
+        int target = 8;
         List<List<Integer>> result = combinationSum(arr, target);
 
         System.out.println(result);

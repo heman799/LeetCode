@@ -1,4 +1,5 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class BinarySearchTreeIterator {
     //constructor
@@ -9,7 +10,7 @@ public class BinarySearchTreeIterator {
         }
     }
 
-    private Stack<TreeNode> stack = new Stack<>();
+    private Deque<TreeNode> stack = new ArrayDeque<>();
 
     /*
      * @return: True if there has next node, or false

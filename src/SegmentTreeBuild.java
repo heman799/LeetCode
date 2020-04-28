@@ -1,4 +1,4 @@
-public class SegmentTreeBuilt {
+class SegmentTreeBuild {
     public SegmentTreeNode build(int start, int end) {
         if (start > end) {
             return null;

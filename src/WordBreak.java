@@ -1,41 +1,31 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class WordBreak {
-    public boolean wordBreak(String s, Set<String> dict) {
-        if (s == null || s.length() == 0) {
-            return true;
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if (s == null || wordDict == null || s.length() == 0 || wordDict.size() == 0) {
+            return false;
         }
 
-        int maxLength = getMaxLength(dict);
+        Set<String> set = new HashSet<>();
+        for(String word : wordDict) {
+            set.add(word);
+        }
 
-        //dp array
-        boolean[] canSegment = new boolean[s.length() + 1];
+        int maxLength = getMaxLength(set);
 
-        canSegment[0] = true;
+        boolean[] canBreak = new boolean[s.length() + 1];
+        canBreak[0] = true;
 
-        for (int i = 1; i <= s.length(); i++) {
-            canSegment[i] = false;
-            for (int lastWordLength = 1;
-                lastWordLength <= maxLength && lastWordLength <= i;
-                lastWordLength++) {
-
-                //dp[j] has to be true
-                if (!canSegment[i - lastWordLength]) {
-                    continue;
+        for (int i = 1; i < canBreak.length; i++) {
+            for (int j = 1; j <= maxLength && j <= i; j++) {
+                String sub = s.substring(i - j, i);
+                if (set.contains(sub) && canBreak[i-j]) {
+                    canBreak[i] = true;
                 }
-
-                //可以直接取， 只需要在字典中查找s.substr(j, i - j)是否存在
-                String word = s.substring(i - lastWordLength, i);
-                if (dict.contains(word)) {
-                    canSegment[i] = true;
-                    break;
-                }
-
             }
         }
 
-        return canSegment[s.length()];
+        return canBreak[s.length()];
     }
 
     private int getMaxLength(Set<String> dict) {
@@ -47,15 +37,49 @@ public class WordBreak {
         return maxLength;
     }
 
-    public static void main(String[] args) {
+    public int leastNumberOfWordBreak(String s, List<String> wordDict) {
+        if (s == null || wordDict == null || s.length() == 0 || wordDict.size() == 0) {
+            return 0;
+        }
+
         Set<String> set = new HashSet<>();
+        for(String word : wordDict) {
+            set.add(word);
+        }
 
-        set.add("lint");
-        set.add("code");
+        int maxLength = getMaxLength(set);
 
-        String s = "lintcode";
+        int[] dp = new int[s.length() + 1];
+        dp[0] = 0;
+
+        for (int i = 1; i <= s.length(); i++) {
+            dp[i] = Integer.MAX_VALUE;
+        }
+
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j <= maxLength && j <= i; j++) {
+                String sub = s.substring(i - j, i);
+                if (set.contains(sub)) {
+                    dp[i] = Math.min(dp[i - j] + 1, dp[i]);
+                }
+            }
+        }
+
+        return dp[s.length()];
+    }
+
+    public static void main(String[] args) {
+//        Set<String> set = new HashSet<>();
+//
+//        set.add("lint");
+//        set.add("code");
+//
+//        String s = "lintcode";
+        String s = "pineapplepenapple";
+        List<String> wordDict = new ArrayList<>(Arrays.asList("pine", "apple", "pen", "pineapple", "applepen"));
 
         WordBreak wordBreak = new WordBreak();
-        System.out.println(wordBreak.wordBreak(s, set));
+        System.out.println(wordBreak.wordBreak(s, wordDict));
+        System.out.println(wordBreak.leastNumberOfWordBreak(s, wordDict));
     }
 }

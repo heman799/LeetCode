@@ -1,4 +1,4 @@
-public class Permutation {
+public class PermutationIndex {
     public long permutationIndex (int[] A) {
         long index = 0;
         long position = 2;

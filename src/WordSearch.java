@@ -1,5 +1,5 @@
 public class WordSearch {
-    public static boolean exist(char[][] board, String word) {
+    public boolean exist(char[][] board, String word) {
         //board is null or empty
         if (board == null || board.length == 0) {
             return false;
@@ -22,7 +22,7 @@ public class WordSearch {
         return false;
     }
 
-    private static boolean find(char[][] board, int i, int j, String word, int start) {
+    private boolean find(char[][] board, int i, int j, String word, int start) {
         if (start == word.length()) {
             return true;
         }
@@ -46,6 +46,13 @@ public class WordSearch {
     }
 
     public static void main(String[] args) {
-        String[] board = {"ABCE", "SFCS", "ADEE"};
+        char[][] board = {
+                {'A', 'B', 'C', 'E'},
+                {'S', 'F', 'C', 'S'},
+                {'A', 'D', 'E', 'E'}
+        };
+        WordSearch wordSearch = new WordSearch();
+        String s = "ABCCED";
+        System.out.println(wordSearch.exist(board, s));
     }
 }

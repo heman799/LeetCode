@@ -40,7 +40,7 @@ public class NQueensII {
     }
 
     public static void main(String[] args) {
-        int n = 4;
+        int n = 8;
         NQueensII queensII = new NQueensII();
         System.out.println(queensII.totalNQueens(n));
     }
