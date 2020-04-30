@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class CountOfSmallerNumber {
 
     public List<Integer> countOfSmallerNumber(int[] A, int[] queries) {

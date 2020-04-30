@@ -1,19 +1,4 @@
-import java.util.PriorityQueue;
-
-class Pair {
-    public int x, y, val;
-    public Pair (int x, int y, int val) {
-        this.x = x;
-        this.y = y;
-        this.val = val;
-    }
-}
-
-class PairComparator implements Comparator<Pair> {
-    public int compare(Pair a, Pair b) {
-        return a.val - b.val;
-    }
-}
+import java.util.*;
 
 public class KthSmallestNumberInSortedMatrix {
     public int kthSmallest(int[][] matrix, int k) {
@@ -22,7 +7,7 @@ public class KthSmallestNumberInSortedMatrix {
         int n = matrix.length;
         int m = matrix[0].length;
         boolean[][] hash = new boolean[n][m];
-        PriorityQueue<Pair> minHeap = new PriorityQueue<Pair>(k, new PairComparator());
+        PriorityQueue<Pair> minHeap = new PriorityQueue<Pair>(k, (a, b) -> a.val - b.val);
         minHeap.add(new Pair(0, 0, matrix[0][0]));
 
         for (int i = 0; i < k - 1; i++) {
@@ -37,6 +22,16 @@ public class KthSmallestNumberInSortedMatrix {
                     minHeap.add(next_Pair);
                 }
             }
-        }   
+        }
+        return 0;
+    }
+
+    class Pair {
+        public int x, y, val;
+        public Pair (int x, int y, int val) {
+            this.x = x;
+            this.y = y;
+            this.val = val;
+        }
     }
 }

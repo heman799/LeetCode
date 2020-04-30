@@ -1,13 +1,3 @@
-class ResultType {
-    public boolean isBalanced;
-    public int maxDepth;
-    //ctor
-    public ResultType(boolean isBalanced, int maxDepth) {
-        this.isBalanced = isBalanced;
-        this.maxDepth = maxDepth;
-    }
-
-}
 
 public class BalancedBinaryTree {
     public boolean isBalanced(TreeNode root) {
@@ -34,9 +24,15 @@ public class BalancedBinaryTree {
 
         int depth = Math.max(left.maxDepth, right.maxDepth) + 1;
         return new ResultType(true, depth);
-
-
     }
 
-
+    class ResultType {
+        public boolean isBalanced;
+        public int maxDepth;
+        //ctor
+        public ResultType(boolean isBalanced, int maxDepth) {
+            this.isBalanced = isBalanced;
+            this.maxDepth = maxDepth;
+        }
+    }
 }

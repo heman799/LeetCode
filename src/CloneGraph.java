@@ -1,14 +1,5 @@
 import java.util.*;
 
-class UndirectedGraphNode{
-    int label;
-    ArrayList<UndirectedGraphNode> neighbors;
-    UndirectedGraphNode(int x){
-        label = x;
-        neighbors = new ArrayList<>();
-    }
-}
-
 public class CloneGraph {
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) {
@@ -39,7 +30,6 @@ public class CloneGraph {
 
     }
 
-
     private ArrayList<UndirectedGraphNode> getNodes(UndirectedGraphNode node) {
         Queue<UndirectedGraphNode> queue = new LinkedList<>();
         HashSet<UndirectedGraphNode> set = new HashSet<>();
@@ -57,6 +47,15 @@ public class CloneGraph {
         }
 
         return new ArrayList<UndirectedGraphNode>(set);
+    }
+
+    class UndirectedGraphNode{
+        int label;
+        ArrayList<UndirectedGraphNode> neighbors;
+        UndirectedGraphNode(int x){
+            label = x;
+            neighbors = new ArrayList<>();
+        }
     }
 
     public static void main(String[] args) {

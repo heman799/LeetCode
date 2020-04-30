@@ -59,7 +59,7 @@ public class WordBreak {
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j <= maxLength && j <= i; j++) {
                 String sub = s.substring(i - j, i);
-                if (set.contains(sub)) {
+                if (set.contains(sub) && dp[i-j] != Integer.MAX_VALUE) {
                     dp[i] = Math.min(dp[i - j] + 1, dp[i]);
                 }
             }
